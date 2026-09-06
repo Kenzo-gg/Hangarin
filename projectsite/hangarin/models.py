@@ -35,7 +35,7 @@ class Note(BaseModel):
     content = models.TextField()
 
     def __str__(self):
-        return {self.note_task.title}
+        return self.note_task.title
 
 class SubTask(BaseModel):
     parent_task = models.ForeignKey(Task, on_delete=models.CASCADE, related_name='subtasks')
@@ -43,4 +43,4 @@ class SubTask(BaseModel):
     sub_status = models.CharField(max_length=50, choices=[('pending', 'Pending'), ('in_progress', 'In Progress'), ('completed', 'Completed')])
 
     def __str__(self):
-        return {self.sub_title}
+        return self.sub_title
