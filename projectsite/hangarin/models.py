@@ -12,8 +12,8 @@ class Task(BaseModel):
     description = models.TextField()
     deadline = models.DateTimeField()
     status = models.CharField(max_length=50, choices=[('pending', 'Pending'), ('in_progress', 'In Progress'), ('completed', 'Completed')])
-    category = models.ForeignKey('Category', on_delete=models.SET_NULL, null=True, blank=True)
-    priority = models.ForeignKey('Priority', on_delete=models.SET_NULL, null=True, blank=True)
+    category = models.ForeignKey('Category', on_delete=models.CASCADE, null=True, blank=True)
+    priority = models.ForeignKey('Priority', on_delete=models.CASCADE, null=True, blank=True)
     
     def __str__(self):
         return self.title
@@ -21,11 +21,19 @@ class Task(BaseModel):
 class Priority(BaseModel):
     priority_name = models.CharField(max_length=50)
 
+    class Meta:
+        verbose_name = "Priority"
+        verbose_name_plural = "Priorities"
+
     def __str__(self):
         return self.priority_name
 
 class Category(BaseModel):
     category_name = models.CharField(max_length=50)
+
+    class Meta:
+            verbose_name = "Category"
+            verbose_name_plural = "Categories"
 
     def __str__(self):
         return self.category_name
