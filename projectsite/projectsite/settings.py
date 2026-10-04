@@ -51,7 +51,7 @@ INSTALLED_APPS = [
 ]
 
 if os.environ.get('PYTHONANYWHERE_SITE'):
-    SITE_ID = 6 # production site
+    SITE_ID = 8 # production site
 else:
     SITE_ID = 7 # local site (127.0.0.1:8000)
 
